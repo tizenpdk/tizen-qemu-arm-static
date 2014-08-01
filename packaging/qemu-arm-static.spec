@@ -27,7 +27,6 @@ Source:         qemu-1.6.0-rc3.tar.bz2
 Source1:        qemu-binfmt-conf.sh
 # this is to make lint happy
 Source300:      rpmlintrc
-Patch0037:      0037-initial-aarch64-work.patch.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  python
@@ -58,7 +57,6 @@ as PC and PowerMac systems.
 
 %prep
 %setup -q -n qemu-1.6.0-rc3
-%patch0037 -p1
 
 %build
 
