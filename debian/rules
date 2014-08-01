@@ -1,0 +1,72 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/dpatch/dpatch.make
+unexport LDFLAGS
+
+build: build-stamp
+build-stamp: patch-stamp
+	dh_testdir
+	./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--libexecdir=/usr/libexec/ \
+	--target-list="arm-linux-user,arm64-linux-user" \
+	--disable-tools \
+	--disable-guest-agent \
+	--disable-docs \
+	--disable-system \
+	--enable-linux-user \
+	--disable-werror \
+	--disable-linux-aio \
+	--disable-fdt \
+	--disable-sdl \
+	--static
+	dh_auto_build
+
+clean: unpatch
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	make DESTDIR=$(CURDIR)/debian/qemu-arm-static install
+	mkdir -p $(CURDIR)/debian/qemu-arm-static/usr/sbin/
+	install -m755 debian/qemu-binfmt-conf.sh $(CURDIR)/debian/qemu-arm-static/usr/sbin/
+	mv $(CURDIR)/debian/qemu-arm-static/usr/bin/qemu-arm $(CURDIR)/debian/qemu-arm-static/usr/bin/qemu-arm-static
+	mv $(CURDIR)/debian/qemu-arm-static/usr/bin/qemu-arm64 $(CURDIR)/debian/qemu-arm-static/usr/bin/qemu-arm64-static
+	rm -rf $(CURDIR)/debian/qemu-arm-static/usr/share
+	rm -rf $(CURDIR)/debian/qemu-arm-static/usr/etc
+	rm -rf $(CURDIR)/debian/qemu-arm-static/etc
+	rm -rf $(CURDIR)/debian/qemu-arm-static/usr/libexec/
+
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_install
+	dh_installman
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary-arch: build install
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

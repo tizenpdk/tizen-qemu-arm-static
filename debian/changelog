@@ -1,0 +1,6 @@
+qemu-arm-static (1.6.0) unstable; urgency=low
+
+   * update to v1.6.0
+
+ -- Gui Chen <gui.chen@intel.com>  Wed, 09 Jul 2014 17:25:35 +0800
+
