@@ -1,3 +1,9 @@
+qemu-arm-static (1.6.0rc3-tizen20141002) unstable; urgency=low
+
+  * Change packaging to Debian non-native
+
+ -- Markus Lehtonen <markus.lehtonen@linux.intel.com>  Thu, 02 Oct 2014 16:40:35 +0300
+
 qemu-arm-static (1.6.0) unstable; urgency=low
 
    * update to v1.6.0
