@@ -1,0 +1,2 @@
+[run]
+include = tests/test_dummy.py
