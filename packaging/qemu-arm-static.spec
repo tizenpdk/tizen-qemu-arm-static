@@ -77,7 +77,7 @@ export LDFLAGS="-lrt -pthread -lgthread-2.0 -lglib-2.0"
 	--disable-sdl \
 	--static
 
-%if 0%{?suse_version} >= 1230 || 0%{?fedora} >= 19
+%if 0%{?suse_version} >= 1230 || 0%{?fedora} >= 19 || 0%{?centos_version} == 700
 # -lrt needs to come after -lglib-2.0 to avoid undefined mq_open, mq_xxx
 sed -i "s/-lglib-2.0/-lglib-2.0 -lrt/" config-host.mak
 %endif
