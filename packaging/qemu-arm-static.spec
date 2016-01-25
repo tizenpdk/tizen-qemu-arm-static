@@ -81,7 +81,7 @@ export LDFLAGS="-lrt -pthread -lgthread-2.0 -lglib-2.0"
 # -lrt needs to come after -lglib-2.0 to avoid undefined mq_open, mq_xxx
 sed -i "s/-lglib-2.0/-lglib-2.0 -lrt/" config-host.mak
 %endif
-
+cp -f find-debuginfo.sh /usr/lib/rpm/find-debuginfo.sh
 make %{?jobs:-j%jobs} V=1
 
 %install
