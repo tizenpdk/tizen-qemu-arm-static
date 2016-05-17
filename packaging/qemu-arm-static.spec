@@ -57,6 +57,9 @@ as PC and PowerMac systems.
 
 %prep
 %setup -q -n qemu-1.6.0-rc3
+%if 0%{?fedora} == 23
+%global debug_package %{nil}
+%endif
 
 %build
 
