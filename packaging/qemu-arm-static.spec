@@ -83,9 +83,6 @@ sed -i "s/-lglib-2.0/-lglib-2.0 -lrt/" config-host.mak
 %endif
 
 make %{?jobs:-j%jobs} V=1
-%if 0%{?fedora} == 23
-cp -f find-debuginfo.sh /usr/lib/rpm/find-debuginfo.sh
-%endif
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
