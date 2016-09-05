@@ -31,6 +31,10 @@ PROGS+=$(QEMU_PROGW)
 endif
 STPFILES=
 
+ifdef CONFIG_LINUX_USER
+PROGS+=$(QEMU_PROG)-binfmt
+endif
+
 config-target.h: config-target.h-timestamp
 config-target.h-timestamp: config-target.mak
 
@@ -165,6 +169,12 @@ else
 $(QEMU_PROG): $(all-obj-y) ../libqemuutil.a ../libqemustub.a
 	$(call LINK,$^)
 endif
+
+$(QEMU_PROG)-binfmt:
+	#pwd
+	#$(CC) $(QEMU_INCLUDES) $(QEMU_CFLAGS) $(QEMU_DGFLAGS) $(CFLAGS) $($@-cflags) -c -o ./linux-user/$@.o $(BUILD_DIR)/linux-user/binfmt.c
+	$(CC) $(QEMU_INCLUDES) $(QEMU_CFLAGS) $(CFLAGS) $($@-cflags) -c -o ./linux-user/$@.o $(BUILD_DIR)/linux-user/binfmt.c
+	$(call LINK,./linux-user/$@.o)
 
 gdbstub-xml.c: $(TARGET_XML_FILES) $(SRC_PATH)/scripts/feature_to_c.sh
 	$(call quiet-command,rm -f $@ && $(SHELL) $(SRC_PATH)/scripts/feature_to_c.sh $@ $(TARGET_XML_FILES),"  GEN   $(TARGET_DIR)$@")

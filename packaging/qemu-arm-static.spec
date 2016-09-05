@@ -105,6 +105,8 @@ rm -rf ${RPM_BUILD_ROOT}
 %defattr(-, root, root)
 %{_bindir}/qemu-arm-static
 %{_bindir}/qemu-arm64-static
+%{_bindir}/qemu-arm-binfmt
+%{_bindir}/qemu-arm64-binfmt
 %{_sbindir}/*
 
 %changelog
