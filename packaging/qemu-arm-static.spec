@@ -21,7 +21,7 @@ Url:            http://www.qemu.org/
 Summary:        Universal CPU emulator
 License:        BSD-3-Clause and GPL-2.0+ and LGPL-2.1+ and MIT
 Group:          System/Emulators/PC
-Version:        1.6.0rc3
+Version:        1.6.1rc3.tizen20160907
 Release:        0
 Source:         qemu-1.6.0-rc3.tar.bz2
 Source1:        qemu-binfmt-conf.sh
@@ -46,7 +46,7 @@ BuildRequires:  zlib-static
 %endif
 
 Provides:       qemu:%_bindir/qemu-arm-static
-Provides:       tizen-qemu-arm-static = 2013.12.12
+Provides:       tizen-qemu-arm-static = 2016.09.07
 
 %description
 QEMU is an extremely well-performing CPU emulator that allows you to
