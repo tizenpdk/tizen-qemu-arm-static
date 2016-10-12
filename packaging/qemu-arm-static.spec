@@ -44,7 +44,11 @@ BuildRequires:  glibc-static
 BuildRequires:  glib2-static
 BuildRequires:  zlib-static
 %endif
+%if 0%{?centos_version} == 600
 
+%else
+Requires:       qemu
+%endif
 Provides:       qemu:%_bindir/qemu-arm-static
 Provides:       tizen-qemu-arm-static = 2016.09.07
 
