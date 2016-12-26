@@ -1,12 +1,12 @@
 Source: qemu-arm-static
 Maintainer: Gui Chen <gui.chen@intel.com>
 Homepage: http://wiki.qemu.org/Index.html
-Standards-Version: 3.7.0
+Standards-Version: 1.6.0
 Build-Depends: debhelper (>= 4.0.0), dpatch, cdbs, pkg-config, python, bzip2, uuid-dev, zlib1g-dev, zlib1g, texi2html, libc6, libglib2.0-dev,
 
 Package: qemu-arm-static
 Architecture: i386 amd64
 Depends: bzip2, uuid-dev, zlib1g-dev, zlib1g, texi2html, libc6, qemu
 Replaces: qemu-user-static
-Provides: tizen-qemu-arm-static-2013.12.12
+Provides: tizen-qemu-arm-static-2016.12.31
 Description: QEMU is an extremely well-performing CPU emulator that allows you to choose between simulating an entire system and running userspace binaries for different architectures under your native operating system. It currently emulates x86, ARM, PowerPC and SPARC CPUs as well as PC and PowerMac systems.

@@ -21,7 +21,7 @@ Url:            http://www.qemu.org/
 Summary:        Universal CPU emulator
 License:        BSD-3-Clause and GPL-2.0+ and LGPL-2.1+ and MIT
 Group:          System/Emulators/PC
-Version:        1.6.0rc3
+Version:        1.6.0rc3.tizen20161231
 Release:        0
 Source:         qemu-1.6.0-rc3.tar.bz2
 Source1:        qemu-binfmt-conf.sh
@@ -50,7 +50,7 @@ BuildRequires:  zlib-static
 Requires:       qemu
 %endif
 Provides:       qemu:%_bindir/qemu-arm-static
-Provides:       tizen-qemu-arm-static = 2013.12.12
+Provides:       tizen-qemu-arm-static = 2016.12.31
 
 %description
 QEMU is an extremely well-performing CPU emulator that allows you to
@@ -114,3 +114,12 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_sbindir}/*
 
 %changelog
+* Sat Dec 31 2016 sk7.park@samsung.com
+- Add depands packae qemu
+- Add the qemu-arm-binfmt (qemu-arm64-binfmt)
+- Upgrade tizen version to tizen20161231
+* Thu Oct 02 2014 markus.lehtonen@linux.intel.com
+- Change packaging to Debian non-native
+* Wed Jul 09 2014 gui.chen@intel.com
+- update to v1.6.0
+
