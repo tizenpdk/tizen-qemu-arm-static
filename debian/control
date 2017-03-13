@@ -1,7 +1,9 @@
 Source: qemu-arm-static
+Section: devel
+Priority: extra
 Maintainer: Gui Chen <gui.chen@intel.com>
 Homepage: http://wiki.qemu.org/Index.html
-Standards-Version: 1.6.0
+Standards-Version: 3.7.0
 Build-Depends: debhelper (>= 4.0.0), dpatch, cdbs, pkg-config, python, bzip2, uuid-dev, zlib1g-dev, zlib1g, texi2html, libc6, libglib2.0-dev,
 
 Package: qemu-arm-static
